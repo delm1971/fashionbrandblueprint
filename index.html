@@ -1,220 +1,547 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>FashionBrandBlueprint — Launch Your Clothing Brand</title>
-  <meta name="description" content="FashionBrandBlueprint helps entrepreneurs launch, market, and scale a clothing brand with step-by-step playbooks, templates, and training." />
-  <meta property="og:title" content="FashionBrandBlueprint" />
-  <meta property="og:description" content="Launch your clothing brand from scratch—name, design, production, marketing, and scaling." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#0b0c10" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Fashion Brand Blueprint</title>
+  <meta name="description" content="How to Start a Clothing Brand From Scratch — a step-by-step guide for fashion entrepreneurs." />
+  <style>
+    :root {
+      --bg: #0f1115;
+      --card: #171a21;
+      --soft: #1f2430;
+      --text: #f5f7fb;
+      --muted: #b8c0d4;
+      --accent: #29c5f6;
+      --accent-2: #ff5b5b;
+      --line: rgba(255,255,255,.1);
+      --max: 1120px;
+      --radius: 20px;
+    }
 
-  <link rel="stylesheet" href="assets/styles.css" />
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(41,197,246,.15), transparent 30%),
+        radial-gradient(circle at top right, rgba(255,91,91,.12), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      background: rgba(15,17,21,.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-weight: 800;
+      letter-spacing: .3px;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a { color: var(--muted); font-weight: 600; }
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .95rem 1.2rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight: 700;
+      transition: transform .15s ease, background .15s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #4fd8ff);
+      color: #04131b;
+      border: none;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .45rem .8rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.04);
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+
+    h1, h2, h3 { line-height: 1.15; margin: 0 0 1rem; }
+    h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); font-weight: 900; }
+    h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; }
+    h3 { font-size: 1.25rem; font-weight: 800; }
+
+    .lead {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: .9rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.025));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    }
+
+    .hero-card .mini-list {
+      display: grid;
+      gap: .85rem;
+      margin-top: 1rem;
+    }
+
+    .mini-item {
+      padding: .95rem 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+    }
+
+    .mini-item strong { display: block; }
+    .mini-item span { color: var(--muted); font-size: .95rem; }
+
+    .section { padding: 2rem 0 1rem; }
+    .section-head { margin-bottom: 1.2rem; }
+    .section-head p { color: var(--muted); margin: 0; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+    .chapter {
+      padding: 1.15rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--line);
+    }
+
+    .chapter p { margin: .5rem 0 0; color: var(--muted); }
+    .chapter .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #091118;
+      font-weight: 900;
+      margin-bottom: .75rem;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 88px;
+    }
+
+    .toc a {
+      display: block;
+      padding: .7rem .8rem;
+      color: var(--muted);
+      border-radius: 12px;
+    }
+
+    .toc a:hover {
+      background: rgba(255,255,255,.05);
+      color: var(--text);
+    }
+
+    .article section {
+      scroll-margin-top: 100px;
+      margin-bottom: 1rem;
+    }
+
+    .article .content-card {
+      margin-bottom: 1rem;
+    }
+
+    .article p,
+    .article li { color: var(--muted); }
+
+    .article ul {
+      padding-left: 1.2rem;
+      margin: .6rem 0 0;
+    }
+
+    .tool-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .tool-card .btn { margin-top: 1rem; width: 100%; }
+
+    .cta {
+      margin: 2rem 0 3rem;
+      padding: 1.5rem;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(41,197,246,.2), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(255,91,91,.15), transparent 30%),
+        rgba(255,255,255,.04);
+      border: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .content-grid,
+      .tool-row,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .toc { position: static; }
+      .nav-inner { align-items: flex-start; flex-direction: column; }
+      .hero { padding-top: 4rem; }
+    }
+  </style>
 </head>
 <body>
   <header class="nav">
     <div class="container nav-inner">
-      <a class="brand" href="index.html">
-        <span class="logo" aria-hidden="true"></span>
+      <a href="#top" class="brand">
+        <span class="brand-mark"></span>
         <span>FashionBrandBlueprint</span>
       </a>
-
       <nav class="nav-links">
-        <a href="#how" data-scroll>How it works</a>
-        <a href="#tools" data-scroll>Tools</a>
-        <a href="ebook.html">Ebook</a>
-        <a class="btn small primary" href="ebook.html">Get the Blueprint</a>
+        <a href="#overview">Overview</a>
+        <a href="#chapters">Chapters</a>
+        <a href="#guide">Read Guide</a>
+        <a href="#tools">Tools</a>
+        <a class="btn primary" href="http://shopify.pxf.io/MKmAPY" target="_blank" rel="sponsored noopener">Start Your Store</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="badge">👕 For entrepreneurs building clothing & streetwear brands</span>
-          <h1 class="h1">Launch your fashion brand from scratch—without guessing.</h1>
-          <p class="p">
-            A step-by-step system to name your brand, design your first drop, source production, launch your store, and
-            market consistently until you scale.
+          <span class="eyebrow">The Fashion Brand Blueprint</span>
+          <h1>How to Start a Clothing Brand From Scratch</h1>
+          <p class="lead">
+            A clean, conversion-focused web version of your ebook for fashion entrepreneurs who want to build a brand,
+            launch products, and start selling online.
           </p>
-
           <div class="hero-actions">
-            <a class="btn primary" href="ebook.html">Get the Ebook + Workbook</a>
-            <a class="btn" href="#how" data-scroll>See the 12-step roadmap</a>
-          </div>
-
-          <div class="kpis">
-            <div class="kpi"><b>Blueprint</b><span>12-step launch system</span></div>
-            <div class="kpi"><b>Workbook</b><span>Exercises + checklists</span></div>
-            <div class="kpi"><b>Templates</b><span>Launch + content plan</span></div>
+            <a class="btn primary" href="#guide">Read the Guide</a>
+            <a class="btn" href="#tools">View Founder Tools</a>
           </div>
         </div>
 
-        <div class="panel hero-card">
-          <h3 style="margin:0 0 8px;font-size:18px;font-weight:900;">Free: Brand Idea Starter Kit</h3>
-          <p class="p" style="font-size:15px;margin:0 0 14px;">
-            Get the brand name worksheet + a 7-day launch checklist.
-          </p>
-
-          <form id="leadForm">
-            <div class="form-row">
-              <input type="email" placeholder="you@email.com" required />
-              <button class="btn primary" type="submit">Send it</button>
+        <aside class="card hero-card">
+          <h3>Launch your brand faster</h3>
+          <p class="lead" style="font-size:1rem; max-width:none;">Use the tools already mentioned in your ebook to design, produce, and sell your first drop.</p>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Shopify</strong>
+              <span>Build your online store and accept orders.</span>
             </div>
-            <div class="notice">No spam. Unsubscribe anytime.</div>
-          </form>
+            <div class="mini-item">
+              <strong>Printful</strong>
+              <span>Create products without carrying inventory.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Envato</strong>
+              <span>Get brand kits, mockups, and design assets.</span>
+            </div>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="http://shopify.pxf.io/MKmAPY" target="_blank" rel="sponsored noopener">Shopify</a>
+            <a class="btn" href="https://www.printful.com/a/14601247:0198da494fef002bbea1ab7b5a3d18e4" target="_blank" rel="sponsored noopener">Printful</a>
+          </div>
+        </aside>
+      </div>
+    </section>
 
-          <div style="margin-top:16px;border-top:1px solid rgba(255,255,255,.10);padding-top:14px;">
-            <div class="badge">✅ Perfect for: first-time founders, streetwear creators, side hustlers</div>
+    <section class="section" id="overview">
+      <div class="container">
+        <div class="section-head">
+          <h2>What this guide covers</h2>
+          <p>Based on your uploaded ebook, this page walks readers through brand naming, product design, production, ecommerce, pricing, marketing, launches, and scaling.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Build the brand</h3>
+            <p>Choose a strong name, define your identity, and shape a style people remember.</p>
+          </div>
+          <div class="card">
+            <h3>Create the product</h3>
+            <p>Start with one or two items, decide between POD, screen printing, or manufacturing, and price intelligently.</p>
+          </div>
+          <div class="card">
+            <h3>Launch and grow</h3>
+            <p>Use content, lookbooks, and limited drops to attract attention and build community.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="how" class="section">
+    <section class="section" id="chapters">
       <div class="container">
-        <h2>The 12-step Fashion Brand Blueprint</h2>
-        <p class="sub">This is the roadmap your ebook + workbook expands into a complete system.</p>
-
-        <div class="grid2">
-          <div class="step"><div><b>1) Brand name</b><span>Choose a name with meaning + availability checks.</span></div></div>
-          <div class="step"><div><b>2) Protect the brand</b><span>Trademark basics + what to avoid early.</span></div></div>
-          <div class="step"><div><b>3) Product direction</b><span>Pick your first drop (1–3 products) and theme.</span></div></div>
-          <div class="step"><div><b>4) Design workflow</b><span>Tools, design rules, and mockup workflow.</span></div></div>
-          <div class="step"><div><b>5) Sourcing blanks</b><span>Quality checklist + supplier research method.</span></div></div>
-          <div class="step"><div><b>6) Printing</b><span>POD vs screen print vs cut-and-sew decision.</span></div></div>
-          <div class="step"><div><b>7) Pricing</b><span>Margin rules, bundles, and drop strategy.</span></div></div>
-          <div class="step"><div><b>8) Lookbook</b><span>DIY photoshoot plan + shot list.</span></div></div>
-          <div class="step"><div><b>9) Website</b><span>Store pages that convert (copy + layout).</span></div></div>
-          <div class="step"><div><b>10) Launch</b><span>Pre-launch hype, drop day plan, post-drop follow-up.</span></div></div>
-          <div class="step"><div><b>11) Marketing</b><span>TikTok/Reels content engine + influencer seeding.</span></div></div>
-          <div class="step"><div><b>12) Scale</b><span>Repeatable drops + community + wholesale basics.</span></div></div>
+        <div class="section-head">
+          <h2>10-step chapter map</h2>
+          <p>Turn your PDF into a browsable resource page visitors can read on any device.</p>
+        </div>
+        <div class="grid-2">
+          <div class="chapter"><span class="num">1</span><h3>Choosing Your Brand Name</h3><p>Pick a memorable, unique name and check domain, Instagram, and trademark availability.</p></div>
+          <div class="chapter"><span class="num">2</span><h3>Defining Your Brand Identity</h3><p>Clarify what your brand represents, who it serves, and what style it reflects.</p></div>
+          <div class="chapter"><span class="num">3</span><h3>Designing Your First Products</h3><p>Begin with one or two hero products and use simple design tools to move quickly.</p></div>
+          <div class="chapter"><span class="num">4</span><h3>Producing Your Clothing</h3><p>Compare print-on-demand, local screen printing, and manufacturing for growth stages.</p></div>
+          <div class="chapter"><span class="num">5</span><h3>Building Your Online Store</h3><p>Set up the pages every clothing brand needs and use Shopify to get online fast.</p></div>
+          <div class="chapter"><span class="num">6</span><h3>Pricing Your Products</h3><p>Use a simple markup model that leaves room for marketing, shipping, and profit.</p></div>
+          <div class="chapter"><span class="num">7</span><h3>Creating a Lookbook</h3><p>Show your brand in context with simple lifestyle images, even from a phone camera.</p></div>
+          <div class="chapter"><span class="num">8</span><h3>Marketing Your Clothing Brand</h3><p>Create content for TikTok, Instagram, Pinterest, and YouTube to build awareness.</p></div>
+          <div class="chapter"><span class="num">9</span><h3>Launching Your First Drop</h3><p>Use a four-week pre-launch structure to build anticipation and urgency.</p></div>
+          <div class="chapter"><span class="num">10</span><h3>Scaling Your Brand</h3><p>Expand into new products, collaborations, accessories, and events as traction grows.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="guide">
+      <div class="container content-grid">
+        <aside class="card toc">
+          <h3>On this page</h3>
+          <a href="#intro">Introduction</a>
+          <a href="#c1">1. Brand Name</a>
+          <a href="#c2">2. Brand Identity</a>
+          <a href="#c3">3. First Products</a>
+          <a href="#c4">4. Production</a>
+          <a href="#c5">5. Online Store</a>
+          <a href="#c6">6. Pricing</a>
+          <a href="#c7">7. Lookbook</a>
+          <a href="#c8">8. Marketing</a>
+          <a href="#c9">9. First Drop</a>
+          <a href="#c10">10. Scaling</a>
+          <a href="#tools">Tools</a>
+        </aside>
+
+        <article class="article">
+          <section id="intro" class="content-card card">
+            <h2>Introduction</h2>
+            <p>Starting a clothing brand has never been easier. Your ebook explains that creators no longer need major investors, retail connections, manufacturing contacts, or large startup capital to begin. Instead, today’s founders can use ecommerce platforms, print-on-demand services, and social media to launch with a single idea and a single product.</p>
+            <ul>
+              <li>Create your fashion brand identity</li>
+              <li>Design your first product</li>
+              <li>Produce clothing without inventory</li>
+              <li>Launch your online store</li>
+              <li>Market your brand online</li>
+            </ul>
+          </section>
+
+          <section id="c1" class="content-card card">
+            <h2>1. Choosing Your Brand Name</h2>
+            <p>Your brand name is the foundation of your clothing company. Aim for something memorable, unique, easy to pronounce, and available as a domain name.</p>
+            <ul>
+              <li>Write down 10 possible brand names</li>
+              <li>Check domain availability</li>
+              <li>Check Instagram username availability</li>
+              <li>Check trademark conflicts</li>
+            </ul>
+          </section>
+
+          <section id="c2" class="content-card card">
+            <h2>2. Defining Your Brand Identity</h2>
+            <p>Successful fashion brands are more than clothing. They represent a culture or lifestyle. Ask what your brand stands for, who it serves, and what style it reflects.</p>
+            <ul>
+              <li>Streetwear</li>
+              <li>Minimalist</li>
+              <li>Luxury basics</li>
+              <li>Athleisure</li>
+            </ul>
+          </section>
+
+          <section id="c3" class="content-card card">
+            <h2>3. Designing Your First Products</h2>
+            <p>You do not need a large clothing line right away. Start with one or two products such as a graphic T-shirt, hoodie, hat, or crewneck sweatshirt. Focus on something simple but meaningful.</p>
+            <p>Recommended design tools include Canva, Adobe Illustrator, and Figma.</p>
+            <a class="btn" href="https://envato.market/xJk2PA" target="_blank" rel="sponsored noopener">Browse Envato Templates</a>
+          </section>
+
+          <section id="c4" class="content-card card">
+            <h2>4. Producing Your Clothing</h2>
+            <p>There are three main production paths:</p>
+            <ul>
+              <li><strong>Print-on-demand:</strong> products are made only after customers order, reducing risk.</li>
+              <li><strong>Local screen printing:</strong> better quality control and margins, but requires inventory.</li>
+              <li><strong>Manufacturing:</strong> useful later for custom garments and larger growth stages.</li>
+            </ul>
+            <p>Common manufacturing locations mentioned in your guide include Portugal, Turkey, China, and Vietnam.</p>
+            <a class="btn" href="https://www.printful.com/a/14601247:0198da494fef002bbea1ab7b5a3d18e4" target="_blank" rel="sponsored noopener">Start With Printful</a>
+          </section>
+
+          <section id="c5" class="content-card card">
+            <h2>5. Building Your Online Store</h2>
+            <p>Your website should include a home page, shop page, about page, product pages, and a contact page. Shopify is one of the easiest ways to create a professional store, accept payments, manage orders, and connect production tools like Printful.</p>
+            <a class="btn primary" href="http://shopify.pxf.io/MKmAPY" target="_blank" rel="sponsored noopener">Start Your Shopify Store</a>
+          </section>
+
+          <section id="c6" class="content-card card">
+            <h2>6. Pricing Your Products</h2>
+            <p>A simple fashion pricing formula from your ebook is:</p>
+            <p><strong>Production Cost × 3 = Retail Price</strong></p>
+            <p>Example: if a T-shirt costs $10 to produce, you can retail it for $30. This leaves room for marketing costs, shipping expenses, and profit.</p>
+          </section>
+
+          <section id="c7" class="content-card card">
+            <h2>7. Creating a Lookbook</h2>
+            <p>A lookbook is a collection of photos that shows your brand in action. You do not need expensive equipment. Many founders use smartphone cameras, natural lighting, and urban locations to communicate brand lifestyle.</p>
+          </section>
+
+          <section id="c8" class="content-card card">
+            <h2>8. Marketing Your Clothing Brand</h2>
+            <p>Marketing is one of the most important parts of building a successful clothing brand. The guide recommends creating content for TikTok, Instagram, Pinterest, and YouTube.</p>
+            <ul>
+              <li>Behind-the-scenes videos</li>
+              <li>Design process videos</li>
+              <li>Street interviews</li>
+              <li>Product showcases</li>
+            </ul>
+          </section>
+
+          <section id="c9" class="content-card card">
+            <h2>9. Launching Your First Drop</h2>
+            <p>Your first launch can follow a simple four-week plan:</p>
+            <ul>
+              <li>Week 1: announce the brand</li>
+              <li>Week 2: preview designs</li>
+              <li>Week 3: behind-the-scenes content</li>
+              <li>Week 4: launch day</li>
+            </ul>
+            <p>Limited drops create urgency and make your launch feel more exclusive.</p>
+          </section>
+
+          <section id="c10" class="content-card card">
+            <h2>10. Scaling Your Brand</h2>
+            <p>Once your first products sell, expand carefully. Your guide suggests adding new clothing categories, accessories, collaborations, and pop-up events while building a strong community around your brand.</p>
+          </section>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
       <div class="container">
-        <h2>What you get</h2>
-        <p class="sub">Everything packaged so you can take action fast.</p>
-
-        <div class="grid3">
-          <div class="panel card">
-            <div class="icon">📘</div>
-            <h3>Ebook</h3>
-            <p>Full blueprint, examples, and launch strategies you can reuse for every drop.</p>
+        <div class="section-head">
+          <h2>Recommended tools for fashion founders</h2>
+          <p>These tools are already part of the guide and fit naturally into the launch workflow.</p>
+        </div>
+        <div class="tool-row">
+          <div class="card tool-card">
+            <h3>Shopify</h3>
+            <p>Build your online clothing store, accept payments, and manage orders from one place.</p>
+            <a class="btn primary" href="http://shopify.pxf.io/MKmAPY" target="_blank" rel="sponsored noopener">Start Your Store</a>
           </div>
-
-          <div class="panel card">
-            <div class="icon">🧩</div>
-            <h3>Workbook</h3>
-            <p>Fill-in exercises, checklists, and planning pages to build your brand step by step.</p>
+          <div class="card tool-card">
+            <h3>Printful</h3>
+            <p>Print-on-demand production for T-shirts, hoodies, hats, and more without holding inventory.</p>
+            <a class="btn primary" href="https://www.printful.com/a/14601247:0198da494fef002bbea1ab7b5a3d18e4" target="_blank" rel="sponsored noopener">Start Printing</a>
           </div>
-
-          <div class="panel card">
-            <div class="icon">⚡</div>
-            <h3>Templates</h3>
-            <p>Launch checklist, pricing calculator outline, content calendar starter, and brand voice prompts.</p>
+          <div class="card tool-card">
+            <h3>Envato Market</h3>
+            <p>Download logos, branding kits, mockups, and graphics to make your brand look polished fast.</p>
+            <a class="btn primary" href="https://envato.market/xJk2PA" target="_blank" rel="sponsored noopener">Get Templates</a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="tools" class="section">
-      <div class="container">
-        <h2>Recommended tools (optional)</h2>
-        <p class="sub">Add your affiliate links later. For now, this builds trust and helps beginners.</p>
-
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              <th>What to use</th>
-              <th>Why it matters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ecommerce</td>
-              <td>Shopify / WooCommerce</td>
-              <td>Fast store setup, payments, shipping rules</td>
-            </tr>
-            <tr>
-              <td>Design</td>
-              <td>Canva / Illustrator</td>
-              <td>Logos, graphics, mockups</td>
-            </tr>
-            <tr>
-              <td>Production</td>
-              <td>Print-on-demand / Local printer</td>
-              <td>Low-risk launch or higher margins</td>
-            </tr>
-            <tr>
-              <td>Marketing</td>
-              <td>TikTok / Reels + Email</td>
-              <td>Organic reach + repeat buyers</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="section" id="shopify">
-  <div class="container">
-    <h2>Recommended: Start your store with Shopify</h2>
-    <p class="sub">
-      Shopify is one of the fastest ways to launch a professional fashion brand store.
-    </p>
-
-    <div class="panel card affiliate-wrap">
-      <a rel="sponsored"
-         href="https://shopify.pxf.io/c/1388368/2784324/13624"
-         target="_top"
-         id="2784324">
-        <img src="//a.impactradius-go.com/display-ad/13624-2784324"
-             alt="Shopify affiliate ad"
-             width="600"
-             height="500" />
-      </a>
-
-      <img height="0" width="0"
-           src="https://imp.pxf.io/i/1388368/2784324/13624"
-           style="position:absolute;visibility:hidden;"
-           border="0" />
-    </div>
-  </div>
-</section><section class="section">
-      <div class="container">
         <div class="cta">
           <div>
-            <h3>Ready to build your first drop?</h3>
-            <p>Get the Ebook + Workbook bundle and follow the blueprint step-by-step.</p>
+            <h3>Ready to turn this guide into a lead generator?</h3>
+            <p>Add this page to your website, link it from your homepage, and use it to send readers to your tools and ebook funnel.</p>
           </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a class="btn primary" href="ebook.html">Get the Bundle</a>
-            <a class="btn" href="#how" data-scroll>View roadmap</a>
-          </div>
+          <a class="btn primary" href="http://shopify.pxf.io/MKmAPY" target="_blank" rel="sponsored noopener">Launch With Shopify</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;">
-      <div>© <span id="year"></span> FashionBrandBlueprint.com</div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;">
-        <a href="ebook.html">Ebook</a>
-        <a href="blog.html">Blog</a>
-        <a href="#tools" data-scroll>Tools</a>
-      </div>
+    <div class="container">
+      © 2026 FashionBrandBlueprint.com · Built from your ebook content.
     </div>
   </footer>
-
-  <script src="assets/main.js"></script>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
